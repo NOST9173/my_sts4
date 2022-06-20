@@ -67,6 +67,11 @@ public class UserController {
 		
 		int result = userService.insertUser(vo);
 		
+		if(result == 1) {
+			System.out.println("회원가입 성공 ");
+		}else {
+			System.out.println("회원가입 실패");
+		}
 		
 		// 포워딩으로 하는거기에 url이 join.do 이고 화면은 메인이면 안되니까
 		// redirect: 쓰고 경로값을 적으면 된다.
