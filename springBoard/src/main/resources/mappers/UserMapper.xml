@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 	<!-- mapper 의 namespace를 찾고 id값을 확인하고 사용?  -->
+<mapper namespace="edu.Board.mapper.UserMapper">
+	
+						<!-- parameterType는 넘어오는 타입. 매번 하기 힘드니 별칭을 해주는데 마이바티스 컨피그에 별칭을 정해준다. -->
+	<insert id="insert" parameterType="userVO">
+		INSERT INTO springuser(
+			 midx
+			,id
+			,password
+			,name
+		)VALUES (
+			 springuser_midx.nextval
+			,#{id}	<!-- 필드명의 해당명이 들어온다? -->
+			,#{password}
+			,#{name}
+		)
+		
+	
+	
+	</insert>	
+	
+	
+	<select id="selectByLogin" parameterType="userVO" resultType="userVO">
+		SELECT  midx
+			  , id
+			  , password
+			  , name
+		  FROM springuser
+		  WHERE id = #{id}
+		  	AND password = #{password}
+	
+	</select>
+	
+								<!-- DAO에 midx만 가져오니 int -->
+	<select id="selectByMypage" parameterType="int" resultType="userVO">
+		SELECT   midx
+				, id
+				, password
+				, name
+			FROM springuser
+			WHERE midx = #{midx}
+	</select>
+										<!-- 업데이트하고 처리하는거라 resultType 필요없음  -->
+ 	<update id="modify" parameterType="userVO">
+		UPDATE springuser
+			SET   password = #{password}
+				, name = #{name}
+			WHERE midx = #{midx}
+	
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
