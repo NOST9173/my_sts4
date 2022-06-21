@@ -56,27 +56,35 @@ public class BoardController {
 	}
 
 	
-	@RequestMapping(value="write.do" , method=RequestMethod.POST)
+	@RequestMapping(value="write.do" , method=RequestMethod.POST)         // request와 session 가져온 것은 로그인 때문에 가져온 것.		
 	public void write(BoardVO vo,HttpServletResponse response ,HttpServletRequest reqeust, HttpSession session) throws IOException {
 		
+		// 로그인 객체 가져 옴 
 		session = reqeust.getSession();
 		
 		UserVO login = (UserVO)session.getAttribute("login");
+		// 여기까지
+		
 		
 		vo.setMidx(login.getMidx());
-		int result = boardService.insert(vo);
+		
+		
+		int result = boardService.insert(vo); // 
+		
+		
+		// 
 		response.setContentType("text/html;charset=utf-8");
 		
-		PrintWriter pw = response.getWriter();
+		PrintWriter pw = response.getWriter(); // 화면에 html을 사용 가능 
 		if(result <= 0) {
 			// 등록이 제대로 이루어지지 않음.
 			
 			
-			pw.append("<script>alert('등록되지 않았습니다');location.href='list.do'</script>");
-			pw.flush();
+			pw.append("<script>alert('등록되지 않았습니다');location.href='list.do'</script>"); // 다른페이지로 넘어가야하기에 redirect는 먹히지 않기에 list.do로 보내라.
+			pw.flush(); //화면에 쓰는 곳이다.
 			
 		}else {
-			pw.append("<script>alert('등록이 완료되었습니다');location.href='list.do'</script>");
+			pw.append("<script>alert('등록이 완료되었습니다');location.href='view.do?bidx="+vo.getBidx()+"'</script>");
 			pw.flush();
 		}
 		
@@ -85,7 +93,7 @@ public class BoardController {
 //		return "redirect:/board/list.do";
 	}
 	
-	@RequestMapping(value="/view.do")
+	@RequestMapping(value="/view.do") // 상세페이지를 가져와 출력해주는?
 	public String view(int bidx, Model model) {
 		
 		BoardVO vo = boardService.selectOne(bidx);

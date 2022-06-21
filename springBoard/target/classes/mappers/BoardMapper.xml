@@ -23,13 +23,15 @@
 		</if>
 
 		<if test='searchType != null and searchType.equals("contentWriter")'>
-			AND b.content like '%'||#{searchValue}||'%'
-			OR u.name like '%'||#{searchValue}||'%'
+			AND (b.content like '%'||#{searchValue}||'%'
+			OR u.name like '%'||#{searchValue}||'%')
 		</if>
 		ORDER BY bidx desc
 	</select>
 	
 	<insert id="insert" parameterType="boardVO">
+	<!-- 괄호 안에 들어가는건 텍스트야 라는 것  -->
+	<![CDATA[
 		INSERT INTO   springboard(
 					  bidx
 					, title
@@ -43,6 +45,12 @@
 		  			, #{content}
 		  			, sysdate
 		)
+		]]>
+									<!--  -->
+		<selectKey resultType="int" keyProperty="bidx" order="AFTER">
+			SELECT max(bidx) FROM springboard
+		
+		</selectKey>
 	</insert>
 	
 	

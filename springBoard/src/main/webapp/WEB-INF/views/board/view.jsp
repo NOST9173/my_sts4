@@ -37,10 +37,10 @@
 			
 		</tbody>
 	</table>
-	<c:if test="${login.midx eq vo.midx}">
+	<c:if test="${login.midx eq vo.midx}"> <!-- 로그인한 사람과 글쓴 사람이 맞는지 확인 후 수정, 삭제 버튼을 보여준다. -->
 	<button>수정</button>
 	<button>삭제</button>
 	</c:if>
-	<button onclick="location.href='list.do'">목록</button>
+	<button onclick="location.href='list.do'">목록</button> 
 </body>
 </html>

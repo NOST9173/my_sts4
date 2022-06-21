@@ -31,7 +31,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<button>저장</button>
+		<button>저장</button> <!-- form 태그 안에 button이 있기에 submit. -->
 	</form>
 	
 	

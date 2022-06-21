@@ -45,6 +45,7 @@
 				</tr>
 			</c:if>
 			<c:if test="${list.size()>0}">
+				
 				<c:forEach var="vo" items="${list }">
 				<%-- <c:forEach begin="0" end="10" step="1"> --%>
 					<tr>
@@ -59,17 +60,21 @@
 	</table>
 	<br>
 	
-	<%-- <c:if test="${!empty login }"> --%>
-	<button onclick="goWrite()">등록</button>
-	<%-- </c:if> --%>
 	
+	<!-- 로그인했을 때 보여주게 하는  -->
+	<%--  <c:if test="${!empty login }">
+	<button onclick="goWrite()">등록</button>
+	 </c:if> --%>
+	
+	
+	<button onclick="goWrite()">등록</button>
 	
 	<script>
 		function goWrite(){
-			var login = '${login}';
+			var login = '${login}'; /* login 앞에 / 가 없기에 상대경로  */
 			console.log();
 			if(login != ""){
-				location.href="write.do";
+				location.href="write.do";	/* 링크는 무조건 get으로 보낸다.  */
 			}else{
 				alert("로그인 후 이용하실 수 있습니다.");
 			}
