@@ -15,7 +15,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/js/**" location="/resources/js/" />
-	<resources mapping="/image/**" location="/resources/image/" />
+	<resources mapping="/img/**" location="/resources/image/" />
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -32,6 +32,8 @@
 	<context:component-scan base-package="edu.board.service" />
 	<context:component-scan base-package="edu.board.dao" />
 	
-	
+	<!--  spring-upload -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	<!--  spring-upload -->
 	
 </beans:beans>

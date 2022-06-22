@@ -11,7 +11,12 @@ public class UserServiceImple implements UserService{
 	
 	@Autowired
 	UserDAO userDao;
-	
+	/*  
+	@Autowired
+	public UserServiceImple (UserDAO userDao) {
+		this.userDao=userDao;
+	}
+	*/
 	
 	@Override
 	public int insertUser(UserVO vo) {

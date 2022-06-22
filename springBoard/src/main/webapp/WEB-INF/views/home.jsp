@@ -44,6 +44,8 @@
 <a href="board/list.do">게시판으로 이동하기</a>
 <br>
 <a href="ajax/sample.do">ajax 예제로 이동하기</a>
+<br>
+<a href="file/sample.do">file upload  예제로 이동하기</a>
 </body>
 </html>
 

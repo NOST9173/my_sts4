@@ -34,7 +34,7 @@ public class AjaxController {
 		return "ajax/sample";
 	}
 	
-	@ResponseBody
+	@ResponseBody													// charset=utf-8 -> 한글이 깨지니까 써주는 것.
 	@RequestMapping(value="/userInfo.do", produces = "application/json;charset=utf-8")
 	public UserVO userInfo(HttpServletRequest request, HttpSession session) {
 		
